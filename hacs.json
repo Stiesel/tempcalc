@@ -1,0 +1,8 @@
+{
+  "name": "TempCalc",
+  "content_in_root": false,
+  "domains": ["tempcalc"],
+  "country": ["DE", "AT", "CH", "US", "GB"],
+  "homeassistant": "2025.12.0",
+  "render_readme": true
+}
