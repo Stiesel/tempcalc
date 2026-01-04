@@ -4,7 +4,6 @@ import voluptuous as vol
 
 from homeassistant import config_entries
 from homeassistant.core import HomeAssistant
-from homeassistant.helpers import entity_registry as er
 
 from .const import (
     DOMAIN,
@@ -31,60 +30,34 @@ def _is_outdoor_sensor(entity_id: str) -> bool:
     return any(keyword in name for keyword in OUTDOOR_KEYWORDS)
 
 
-def _get_all_sensors(hass: HomeAssistant):
-    """Return all numeric sensors."""
-    registry = er.async_get(hass)
-    sensors = []
-
-    for entity_id, entry in registry.entities.items():
-        if entry.domain != "sensor":
-            continue
-
-        # Skip plant sensors
-        if _is_plant_sensor(entity_id):
-            continue
-
-        sensors.append(entity_id)
-
-    return sensors
-
-
 def _get_temperature_sensors(hass: HomeAssistant):
-    """Return all temperature sensors."""
-    registry = er.async_get(hass)
+    """Return all temperature sensors from hass.states."""
     sensors = []
 
-    for entity_id, entry in registry.entities.items():
-        if entry.domain != "sensor":
-            continue
-
-        if entry.device_class != "temperature":
-            continue
-
+    for state in hass.states.async_all("sensor"):
+        entity_id = state.entity_id
         if _is_plant_sensor(entity_id):
             continue
 
-        sensors.append(entity_id)
+        device_class = state.attributes.get("device_class")
+        if device_class == "temperature":
+            sensors.append(entity_id)
 
     return sensors
 
 
 def _get_humidity_sensors(hass: HomeAssistant):
-    """Return all humidity sensors."""
-    registry = er.async_get(hass)
+    """Return all humidity sensors from hass.states."""
     sensors = []
 
-    for entity_id, entry in registry.entities.items():
-        if entry.domain != "sensor":
-            continue
-
-        if entry.device_class != "humidity":
-            continue
-
+    for state in hass.states.async_all("sensor"):
+        entity_id = state.entity_id
         if _is_plant_sensor(entity_id):
             continue
 
-        sensors.append(entity_id)
+        device_class = state.attributes.get("device_class")
+        if device_class == "humidity":
+            sensors.append(entity_id)
 
     return sensors
 
