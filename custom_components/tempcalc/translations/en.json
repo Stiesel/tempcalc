@@ -1,0 +1,61 @@
+{
+  "title": "TempCalc",
+  "config": {
+    "step": {
+      "user": {
+        "title": "TempCalc Setup",
+        "description": "Configure indoor and optional outdoor sensors.",
+        "data": {
+          "indoor_temperature_sensor": "Indoor temperature sensor",
+          "indoor_humidity_sensor": "Indoor humidity sensor",
+          "outdoor_temperature_sensor": "Outdoor temperature sensor (optional)",
+          "outdoor_humidity_sensor": "Outdoor humidity sensor (optional)",
+          "enable_absolute_humidity": "Enable absolute humidity",
+          "enable_mold_index": "Enable mold index",
+          "enable_dew_point": "Enable dew point",
+          "enable_enthalpy": "Enable enthalpy",
+          "enable_ventilation_recommendation": "Enable ventilation recommendation",
+          "enable_ventilation_duration": "Enable ventilation duration"
+        }
+      },
+      "options": {
+        "title": "TempCalc Options",
+        "description": "Adjust sensor selection and calculation options.",
+        "data": {
+          "indoor_temperature_sensor": "Indoor temperature sensor",
+          "indoor_humidity_sensor": "Indoor humidity sensor",
+          "outdoor_temperature_sensor": "Outdoor temperature sensor (optional)",
+          "outdoor_humidity_sensor": "Outdoor humidity sensor (optional)",
+          "enable_absolute_humidity": "Enable absolute humidity",
+          "enable_mold_index": "Enable mold index",
+          "enable_dew_point": "Enable dew point",
+          "enable_enthalpy": "Enable enthalpy",
+          "enable_ventilation_recommendation": "Enable ventilation recommendation",
+          "enable_ventilation_duration": "Enable ventilation duration"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "absolute_humidity": {
+        "name": "Absolute Humidity"
+      },
+      "dew_point": {
+        "name": "Dew Point"
+      },
+      "enthalpy": {
+        "name": "Enthalpy"
+      },
+      "mold_index": {
+        "name": "Mold Index"
+      },
+      "ventilation_recommendation": {
+        "name": "Ventilation Recommendation"
+      },
+      "ventilation_duration": {
+        "name": "Ventilation Duration"
+      }
+    }
+  }
+}
